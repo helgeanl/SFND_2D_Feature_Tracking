@@ -6,7 +6,7 @@
 #include <vector>
 #include <cmath>
 #include <limits>
-#include <numeric>    
+#include <numeric>
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
