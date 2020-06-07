@@ -138,11 +138,11 @@ int main(int argc, const char *argv[])
         //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
         double det_time;
         if (detectorType.compare("SHITOMASI") == 0){
-            det_time = detKeypointsShiTomasi(keypoints, imgGray, false);
+            det_time = detKeypointsShiTomasi(keypoints, imgGray, bVis);
         }else if (detectorType.compare("HARRIS") == 0){
-            det_time = detKeypointsHarris(keypoints, imgGray, false);
+            det_time = detKeypointsHarris(keypoints, imgGray, bVis);
         }else{
-            det_time = detKeypointsModern(keypoints, imgGray, detectorType, false);
+            det_time = detKeypointsModern(keypoints, imgGray, detectorType, bVis);
         }
         det_times.push_back(det_time);
         
@@ -267,6 +267,20 @@ int main(int argc, const char *argv[])
     cout << "- Mean detections: " << mean_detections << endl;
     cout << "- Mean matches: " << mean_matches << endl;
     cout << "- Mean keypoint size: " << mean_sizes << endl;
+    cout << "Detection count: ";
+    for (auto i : num_detected_keypoints) cout << i << ",";
+    cout << endl;
 
+    cout << "Detection time: ";
+    for (auto i : det_times) cout << i << ",";
+    cout << endl;
+
+    cout << "Match count: ";
+    for (auto i : num_matched_keypoints) cout << i << ",";
+    cout << endl;
+
+    cout << "Match time: ";
+    for (auto i : des_times) cout << i << ",";
+    cout << endl;
     return 0;
 }
